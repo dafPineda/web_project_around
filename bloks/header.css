@@ -1,3 +1,28 @@
 .header{
     margin:5vw;
+    height: 3rem;
+    padding: 0;
+    display: flex;
+}
+.header__title{
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    justify-content: start;
+    font-weight: bold;
+    margin: 0;
+    font-size: 50px;
+    margin-top: 5px;
+}
+
+.header__title_little-up{
+    margin-top: 0;
+    font-weight: normal;
+    font-size: 15px;
+    justify-content: start;
+}
+.header__line{
+    position: relative;
+    top: 10px;
+    border: none;
+    height: 1px;
+    background: #444444;
 }

@@ -1,12 +1,35 @@
-.profile{
+.profile-grid{
+    font-size: 50px;
+    font-weight: bold;
     margin:0 5vw;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    grid-template-rows: repeat(2,1fr);
+    gap:10px;
 }
 .profile__image{
-    width: 110px;
-    min-width: 110px;
-    height: 110px;
-    background-image: url("../images/foto__perfil.jpg");
+    background-image: url("./images/foto__perfil.jpg");
+    grid-column:1;
+    grid-row: 1/2;
     background-size: cover;
     background-position: center;
     border-radius: 50%;
+    min-width: 110px;
+    height: 110px;
+}
+/*.profile__name{
+    grid-column: 2;
+    grid-template-rows: 1;
+}
+.profile__ocupation{
+    grid-column: 2;
+    grid-row: 2;
+}
+.profile__button-edit{
+    grid-column:3;
+    grid-row: 1;
+}
+.profile__button-add{
+    grid-column: 4;
+    grid-row: 1/2;
 }

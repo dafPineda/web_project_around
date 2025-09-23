@@ -5,29 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Around</title>
     <link rel="stylesheet" href="./pages/index.css">
+    <style>
+.profile-grid{
+    margin:0 5vw;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    grid-template-rows: repeat(2,1fr);
+    gap:10px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'inter', Arial, Helvetica, sans-serif;
+}
+.profile__image{
+    background-image: url("./images/foto__perfil.jpg");
+    grid-column:1;
+    grid-row: 1 span;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    min-width: 110px;
+    height: auto;
+}
+.profile__name{
+    grid-column: 2;
+    grid-template-rows: 1;
+}
+.profile__ocupation{
+    grid-column: 2;
+    grid-row: 2;
+    font-size:20px;
+}
+.profile__button-edit{
+    background-color: black;
+    grid-column:3;
+    grid-row: 1;
+    /* border: 2px solid rgb(255, 255, 255); /* borde negro */ 
+    padding: 10px;
+    width:50px;
+    height: auto;
+}
+.profile__button-edit svg{
+    background-color: white;
+}
+.profile__button-add{
+    grid-column: 4;
+    grid-row: 1 span;
+}
+    </style>
 </head>
 <body>
     <div class="page">
          <header class="header">
-            <h1 class="header_title">Around <span class="header__title_little-up"></span></h1>
+           <div class="header__title"><h1 class="header__title">Around</h1></div> 
+           <h2 class="header__title header__title_little-up">The U.S.</h2>
             <hr class="header__line">
          </header>
          <main class="main">
-            <section class="profile">
+            <section class="profile-grid">
                 <div class="profile__image"></div>
-                <div class="profile__info">
-                    <h2 class="profile__name">Jacques Cousteau</h2>
-                    <h3 class="profile__ocupation">Exporador</h3>
-                    <button class="profile__button-edit"></button>
-                </div>
+                <h2 class="profile__name">Jacques Cousteau</h2>
+                <button class="profile__button-edit">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
+                        <!-- cuadrado -->
+                        <rect x="2" y="2" width="20" height="20" rx="3" stroke="black" stroke-width="2" fill="none"/>
+                        <!-- lápiz -->
+                        <path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25zM20.7 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 
+                                3.75 3.75 1.83-1.83z"/>
+                    </svg>
+                </button>
+                <h3 class="profile__ocupation">Exporador</h3>
                 <button class="profile__button-add"></button>
-                
-
             </section>
 
 
          </main>
-         <footer class="footer"></footer>
+         <footer class="footer">
+            <p class="footer__copyright">© 2025 Aroud The U.S.</p>
+         </footer>
     </div>
    
 </body>
