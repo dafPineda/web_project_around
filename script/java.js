@@ -12,6 +12,8 @@ buttonSave.disabled = true;
 
 function editProfile() {
   editBlock.style.display = 'block';
+  inputName.value = userName.textContent;
+  inputOcupacion.value = userWork.textContent;
 }
 
 function closeProfile() {

@@ -7,6 +7,11 @@
     color:#777;
 }
 
+@media (max-width:1024px) {
+    .footer{
+        margin:0 7vw;
+    }
+}
 @media (max-width:544px){
     .footer{
         margin: 0 10vw 20px;

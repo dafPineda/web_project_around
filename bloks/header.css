@@ -28,6 +28,11 @@
     background: #444444;
 }
 
+@media (max-width:1024px){
+    .header{
+        margin:5vw 7vw;
+    }
+}
 @media (max-width: 544px){
     .header{
         margin: 50px 13vw;
@@ -39,3 +44,4 @@
         font-size: 15px;
     }
 }
+

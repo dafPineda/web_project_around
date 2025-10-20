@@ -45,6 +45,12 @@
     justify-self: end;
     margin-left:auto;
 }   
+
+@media (max-width:1024px) {
+    .elements{
+        padding:50px 7vw;
+    }
+}
 @media (max-width:544px) {
     .elements{
         padding: 50px 10vw 30px;
