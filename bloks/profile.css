@@ -1,12 +1,128 @@
 .profile{
-    margin:0 5vw;
+    margin:0 13vw;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 0.5fr 1.5fr;
+    grid-template-rows: repeat(2,1fr);
+    row-gap:20px;
+    column-gap: 5px;
 }
 .profile__image{
-    width: 110px;
-    min-width: 110px;
-    height: 110px;
     background-image: url("../images/foto__perfil.jpg");
+    grid-column:1;
+    grid-row: 1/3;
     background-size: cover;
     background-position: center;
     border-radius: 50%;
+    min-width: 110px;
+    height: 160px;
+}
+.profile__name{
+    width: 100%;
+    grid-column: 2;
+    grid-row: 1;
+    margin:0;
+    margin-left: 5px;
+    align-self: end;
+    height: 2rem;
+    font-size: 45px;
+    font-weight: bold;
+    font-family: 'inter', Arial, Helvetica, sans-serif;
+}
+.profile__ocupation{
+    grid-column: 2;
+    grid-row: 2;
+    margin:0;
+    margin-left: 10px;
+    font-size:20px;
+    font-weight: bold;
+    font-family: 'inter', Arial, Helvetica, sans-serif;
+}
+.profile__button-edit{
+    background-color: black;
+    grid-column:3;
+    grid-row: 1/2;
+    border: 2px solid rgb(0, 0, 0); 
+    padding: 10px;
+    width:50px;
+    height: 30px;
+    align-self: center;
+    cursor: pointer;
+}
+.profile__button-edit svg{
+    background-color: white;
+}
+.profile__button-edit svg:hover{
+    background-color: gray;
+}
+.profile__button-add{
+    grid-column: 4/5;
+    grid-row: 1/3;
+    background-color: #111;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size: 60px;
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+    transition: 0.2s;
+    justify-self: end;
+    align-self: center;
+}
+.profile__button-add:hover{
+    background-color: rgb(63, 61, 61);
+}
+@media (max-width:544px){
+    .profile{
+        margin:0 9vw;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 6fr 1fr 1fr 2fr ;
+        gap:10px;
+        column-gap: 5px;
+    }
+    .profile__image{
+        grid-row: 1;
+        grid-column: 1/5;
+        width: 180px;
+        height: 180px;
+        align-self: center;
+        justify-self: center;
+        padding:8px;
+    }
+    .profile__name{
+        grid-row: 2;
+        grid-column: 1/4;
+        justify-self: end;
+        align-self: end;
+        font-size: 22px;
+        height: auto;
+        width: 198px;
+    }
+    .profile__button-edit{
+        grid-row: 2;
+        grid-column: 4/5;
+        justify-self: start;
+        align-self: end;
+        width: 25px;
+        margin: 0;
+        padding: 0;
+        height: 25px;
+    }
+    .profile__ocupation{
+        grid-row: 3;
+        grid-column: 1/6;
+        justify-self: center;
+        align-items: end;
+        font-size: 10px;
+        margin:0;
+        height: 2rem;
+    }
+    .profile__button-add{
+        grid-row: 4;
+        grid-column:1/6;
+        justify-self: center;
+        align-self: center;
+        font-size: 40px;
+        width: 100%;
+    }
 }

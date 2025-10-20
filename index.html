@@ -9,26 +9,102 @@
 <body>
     <div class="page">
          <header class="header">
-            <h1 class="header_title">Around <span class="header__title_little-up"></span></h1>
+           <div class="header__title">
+                <h1 class="header__title header__title_big">Around</h1>           
+                <h2 class="header__title header__title_little-up">The U.S.</h2>
+            </div> 
             <hr class="header__line">
          </header>
          <main class="main">
+            
+            <section class="form">
+                <form class="form__info">
+                    <button class="form__info-close">&times;</button>
+                    <h2 class="form__info-title">Editar perfil</h2>
+                    <fieldset class="form__info__fieldset">
+                        <input 
+                        id="name"
+                        class="form__input"
+                        type="text"
+                        placeholder="Nombre*"
+                        required>
+                        <input 
+                        id="work"
+                        type="text"
+                        class="form__input"
+                        placeholder="Acerca de mi*"
+                        required
+                        >
+                        <button type="submit" class="form__info__button" id="button">
+                        Guardar
+                        </button>
+                    </fieldset>
+                </form> 
+            </section>
             <section class="profile">
                 <div class="profile__image"></div>
-                <div class="profile__info">
-                    <h2 class="profile__name">Jacques Cousteau</h2>
-                    <h3 class="profile__ocupation">Exporador</h3>
-                    <button class="profile__button-edit"></button>
-                </div>
-                <button class="profile__button-add"></button>
-                
-
+                <h2 class="profile__name">Jacques Cousteau</h2>
+                <button class="profile__button-edit">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
+                        <!-- cuadrado -->
+                        <rect x="2" y="2" width="20" height="20" rx="3" stroke="black" stroke-width="2" fill="none"/>
+                        <!-- lápiz -->
+                        <path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25zM20.7 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 
+                                3.75 3.75 1.83-1.83z"/>
+                    </svg>
+                </button>
+                <h3 class="profile__ocupation">Exporador</h3>
+                <button class="profile__button-add">+</button>
             </section>
-
-
+            <section class="elements">
+                <div class="element__card">
+                    <img class="element__card-image" src="./images/elemento1.jpg">                    
+                    <div class="element__card-info">
+                        <p class="element__card-text">Valle de Yosemite</p>
+                        <span class="element__card-heart">♡</span>
+                    </div>
+                </div>
+                <div class="element__card">
+                    <img class="element__card-image" src="./images/elemento2.jpg">
+                    <div class="element__card-info">
+                        <p class="element__card-text">Lago Louise</p>
+                        <span class="element__card-heart">♡</span>
+                    </div>
+                </div>
+                <div class="element__card">
+                    <img class="element__card-image" src="./images/elemento3.jpg">   
+                    <div class="element__card-info">
+                        <p class="element__card-text">Montañas Calvas</p>
+                        <span class="element__card-heart">♡</span>
+                    </div>
+                </div>
+                <div class="element__card">
+                    <img class="element__card-image" src="./images/elemento4.jpg">
+                    <div class="element__card-info">
+                        <p class="element__card-text">Latemar</p>
+                        <span class="element__card-heart">♡</span>
+                    </div>    
+                </div>
+                <div class="element__card">
+                    <img class="element__card-image" src="./images/elemento5.jpg">    
+                    <div class="element__card-info">
+                        <p class="element__card-text">Vanois National...</p>
+                        <span class="element__card-heart">♡</span>
+                    </div>
+                </div>
+                <div class="element__card">
+                    <img class="element__card-image" src="./images/elemento6.jpg">    
+                    <div class="element__card-info">
+                        <p class="element__card-text">Lago di Braies</p>
+                        <span class="element__card-heart">♡</span>
+                    </div>
+                </div>
+            </section>
          </main>
-         <footer class="footer"></footer>
+         <footer class="footer">
+            <p class="footer__copyright">© 2025 Aroud The U.S.</p>
+         </footer>
     </div>
-   
+   <script src="script/java.js"></script>
 </body>
 </html>
