@@ -9,7 +9,6 @@ let userWork = document.querySelector('.profile__ocupation');
 
 buttonSave.disabled = true;
 
-
 function editProfile() {
   editBlock.style.display = 'block';
   inputName.value = userName.textContent;

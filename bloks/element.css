@@ -1,4 +1,4 @@
- .element__card{
+ .element{
     margin:0;
     padding: 50px 10vw;
     display: flex;
@@ -16,7 +16,7 @@
     flex-direction: column;
 }
 .element__card-image{
-    height:273px;
+    height:264px;
     width: 100%;
     object-fit: cover; 
     background-size: cover;
@@ -29,6 +29,7 @@
     align-items: center;
 }
 .element__card-text{
+    line-height: normal;
     font-size:24px;
     font-family: "inter",Arial, Helvetica, sans-serif;
     font-weight: 900;
@@ -41,14 +42,16 @@
 .element__card-heart{
     width:1fr;
     font-size: 50px;
-    color: #555;
     justify-self: end;
     margin-left:auto;
     cursor:pointer;
-}   
+    color: transparent;
+    text-shadow: 0px 0px 0 white, 0px 5px 0 black, 2px 0px 0 black, -2px 1px 0 black, 0px -2px 0 black;
+}  
 .element__card-heart:hover{
-    color: #999;
+    text-shadow: 0px 0px 0 white, 0px 5px 0 #999, 2px 0px 0 #999, -2px 1px 0 #999, 0px -2px 0 #999;
 }
+
 @media (max-width:1024px) {
     .elements{
         padding:50px 7vw;
