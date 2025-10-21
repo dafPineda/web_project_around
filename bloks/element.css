@@ -53,12 +53,12 @@
 }
 
 @media (max-width:1024px) {
-    .elements{
+    .element{
         padding:50px 7vw;
     }
 }
 @media (max-width:544px) {
-    .elements{
+    .element{
         padding: 50px 10vw 30px;
     }
     .element__card-text{
