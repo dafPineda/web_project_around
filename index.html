@@ -16,26 +16,48 @@
             <hr class="header__line">
          </header>
          <main class="main">
-            
             <section class="form">
-                <form class="form__container">
-                    <button class="form__close">&times;</button>
+                <form class="form__container" id="new-element__form">
+                    <button type="button" class="form__close" id="new-element__close">&times;</button>
+                    <h2 class="form__title">Nuevo lugar</h2>
+                    <fieldset class="form__fieldset">
+                        <input 
+                        id="new-element__input-name"
+                        class="form__input"
+                        type="text"
+                        placeholder="Title*"
+                        required>
+                        <input 
+                        id="new-element__input-link"
+                        type="text"
+                        class="form__input"
+                        placeholder="Link*"
+                        required
+                        >
+                        <button type="button" class="form__button" id="new-element__button" disabled>
+                        Guardar
+                        </button>
+                    </fieldset>
+                </form>
+                <form class="form__container" id="edit-profile__form">
+                    <button type="button" class="form__close" id="edit-profile__close">&times;</button>
                     <h2 class="form__title">Editar perfil</h2>
                     <fieldset class="form__fieldset">
                         <input 
-                        id="name"
+                        id="profile-name"
                         class="form__input"
                         type="text"
                         placeholder="Nombre*"
-                        required>
+                        required
+                        >
                         <input 
-                        id="work"
+                        id="profile-work"
                         type="text"
                         class="form__input"
                         placeholder="Acerca de mi*"
                         required
                         >
-                        <button type="submit" class="form__button" id="button">
+                        <button type="button" class="form__button" id="edit-profile__button" disabled>
                         Guardar
                         </button>
                     </fieldset>
@@ -44,59 +66,26 @@
             <section class="profile">
                 <div class="profile__image"></div>
                 <h2 class="profile__name">Jacques Cousteau</h2>
-                <button class="profile__button-edit">
+                <button type="button" class="profile__button-edit">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
                         <rect x="2" y="2" width="20" height="20" rx="3" stroke="black" stroke-width="2" fill="none"/>
                         <path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25zM20.7 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 
                                 3.75 3.75 1.83-1.83z"/>
                     </svg>
                 </button>
-                <h3 class="profile__ocupation">Exporador</h3>
-                <button class="profile__button-add">+</button>
+                <h3 class="profile__ocupation">Explorador</h3>
+                <button type="button" class="profile__button-add">+</button>
             </section>
-            <section class="element">
-                <div class="element__card">
-                    <img class="element__card-image" src="./images/elemento1.jpg" alt="Imagen del Valle Yosemite">                    
-                    <div class="element__card-info">
-                        <p class="element__card-text">Valle de Yosemite</p>
-                        <span class="element__card-heart">♥</span>
+            <section class="element" id="element">
+                <template class="template-element">
+                    <div class="element__card">
+                        <img class="element__card-image" src="" alt="">                    
+                        <div class="element__card-info">
+                            <p class="element__card-text"></p>
+                            <button class="element__card-heart" type="button"></button>
+                        </div>
                     </div>
-                </div>
-                <div class="element__card">
-                    <img class="element__card-image" src="./images/elemento2.jpg" alt="Foto del Lago Louise">
-                    <div class="element__card-info">
-                        <p class="element__card-text">Lago Louise</p>
-                        <span class="element__card-heart">♥</span>
-                    </div>
-                </div>
-                <div class="element__card">
-                    <img class="element__card-image" src="./images/elemento3.jpg" alt="Foto de las montañas Calvas">   
-                    <div class="element__card-info">
-                        <p class="element__card-text">Montañas Calvas</p>
-                        <span class="element__card-heart">♥</span>
-                    </div>
-                </div>
-                <div class="element__card">
-                    <img class="element__card-image" src="./images/elemento4.jpg" alt="Foto de Latemar">
-                    <div class="element__card-info">
-                        <p class="element__card-text">Latemar</p>
-                        <span class="element__card-heart">♥</span>
-                    </div>    
-                </div>
-                <div class="element__card">
-                    <img class="element__card-image" src="./images/elemento5.jpg" alt="Foto de Vannois National Park">    
-                    <div class="element__card-info">
-                        <p class="element__card-text">Vanois National Park</p>
-                        <span class="element__card-heart">♥</span>
-                    </div>
-                </div>
-                <div class="element__card">
-                    <img class="element__card-image" src="./images/elemento6.jpg" alt="Foto Lado di Braises">    
-                    <div class="element__card-info">
-                        <p class="element__card-text">Lago di Braies</p>
-                        <span class="element__card-heart">♥</span>
-                    </div>
-                </div>
+                </template>
             </section>
          </main>
          <footer class="footer">

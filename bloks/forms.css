@@ -10,6 +10,12 @@
     z-index: 9998; 
 
 }
+#edit-profile__form{
+    display: none;
+}
+#new-element__form{
+    display: none;
+}
 .form__container{
     position: fixed;
     top:50%;
@@ -69,7 +75,13 @@
     color: #fff;
     cursor: pointer;
 }
-.form__button:disabled{
+#new-element__button.form__button:disabled{
+    background: #f8f8f8;
+    color: #999;
+    cursor: not-allowed;
+    border-color: #999;
+}
+#edit-profile__button.form__button:disabled{
     background: #f8f8f8;
     color: #999;
     cursor: not-allowed;
