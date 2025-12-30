@@ -8,14 +8,90 @@
 </head>
 <body>
     <div class="page">
-         <header>
-
+         <header class="header">
+           <div class="header__title">
+                <h1 class="header__title header__title_big">Around</h1>           
+                <h2 class="header__title header__title_little-up">The U.S.</h2>
+            </div> 
+            <hr class="header__line">
          </header>
-         <main>
-
+         <main class="main">
+            <section class="form">
+                <form class="form__container" id="new-element__form">
+                    <button type="button" class="form__close" id="new-element__close">&times;</button>
+                    <h2 class="form__title">Nuevo lugar</h2>
+                    <fieldset class="form__fieldset">
+                        <input 
+                        id="new-element__input-name"
+                        class="form__input"
+                        type="text"
+                        placeholder="Title*"
+                        required>
+                        <input 
+                        id="new-element__input-link"
+                        type="text"
+                        class="form__input"
+                        placeholder="Link*"
+                        required
+                        >
+                        <button type="button" class="form__button" id="new-element__button" disabled>
+                        Guardar
+                        </button>
+                    </fieldset>
+                </form>
+                <form class="form__container" id="edit-profile__form">
+                    <button type="button" class="form__close" id="edit-profile__close">&times;</button>
+                    <h2 class="form__title">Editar perfil</h2>
+                    <fieldset class="form__fieldset">
+                        <input 
+                        id="profile-name"
+                        class="form__input"
+                        type="text"
+                        placeholder="Nombre*"
+                        required
+                        >
+                        <input 
+                        id="profile-work"
+                        type="text"
+                        class="form__input"
+                        placeholder="Acerca de mi*"
+                        required
+                        >
+                        <button type="button" class="form__button" id="edit-profile__button" disabled>
+                        Guardar
+                        </button>
+                    </fieldset>
+                </form> 
+            </section>
+            <section class="profile">
+                <div class="profile__image"></div>
+                <h2 class="profile__name">Jacques Cousteau</h2>
+                <button type="button" class="profile__button-edit">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
+                        <rect x="2" y="2" width="20" height="20" rx="3" stroke="black" stroke-width="2" fill="none"/>
+                        <path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25zM20.7 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 
+                                3.75 3.75 1.83-1.83z"/>
+                    </svg>
+                </button>
+                <h3 class="profile__ocupation">Explorador</h3>
+                <button type="button" class="profile__button-add">+</button>
+            </section>
+            <section class="element" id="element">
+                <template class="template-element">
+                    <div class="element__card">
+                        <img class="element__card-image" src="" alt="">                    
+                        <div class="element__card-info">
+                            <p class="element__card-text"></p>
+                            <button class="element__card-heart" type="button"></button>
+                        </div>
+                    </div>
+                </template>
+            </section>
          </main>
-         <footer></footer>
+         <footer class="footer">
+            <p class="footer__copyright">© 2025 Aroud The U.S.</p>
+         </footer>
     </div>
-   
+   <script src="scripts/index.js"></script>
 </body>
 </html>
