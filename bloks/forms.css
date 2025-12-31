@@ -75,6 +75,9 @@
     color: #fff;
     cursor: pointer;
 }
+.form__button:hover{
+    opacity: .7;
+}
 #new-element__button.form__button:disabled{
     background: #f8f8f8;
     color: #999;

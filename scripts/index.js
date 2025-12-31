@@ -112,6 +112,9 @@ function createNewPlace(name, link){
   placeCard.querySelector(".element__card-heart").addEventListener("click", function (evt) {
     evt.target.classList.toggle('element__card-heart_active');
   });
+  placeCard.querySelector(".element__card-trash").addEventListener("click", function(){
+    placeCard.remove();
+  })
 
   return placeCard;
 }
