@@ -42,6 +42,33 @@
     background-size: cover;
     background-position: center;
 }
+.image-window{
+    display: none;
+    position:fixed;
+    inset: 0;
+    background: rgba(0,0,0,.8);
+    justify-content: center;
+    align-items: center;
+}
+.image-window_open {
+  display: flex;
+  z-index: 1;
+}
+.image-window__button-close{
+    margin: 0;
+    position: absolute;
+    top:80px;
+    right: 100px;
+    background: none;
+    border: none;
+    font-size: 80px;
+    color: ghostwhite;
+    cursor: pointer;
+}
+.image-window__image{
+    max-width: 75vw;
+    max-height: 75vh;
+}
 .element__card-info{
     display: flex;
     align-items: center;
@@ -57,7 +84,7 @@
     white-space: nowrap;        
     overflow: hidden;           
     text-overflow: ellipsis;    
-    width: 2fr;
+    width:80%;
 }
 .element__card-heart {
   border: none;
@@ -85,6 +112,10 @@
 @media (max-width:1024px) {
     .element{
         padding:50px 7vw;
+    }
+    .image-window__button-close{
+        top: 320px;
+        right: 15px;
     }
 }
 @media (max-width:544px) {

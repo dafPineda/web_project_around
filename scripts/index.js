@@ -19,6 +19,11 @@ let userWork = document.querySelector('.profile__ocupation');
 let newElementInputName = document.querySelector('#new-element__input-name');
 let newElementInputLink = document.querySelector('#new-element__input-link');
 const elementsContainer = document.querySelector('.element');
+
+const imageWindow = document.querySelector('.image-window');
+const imageWindowImg = imageWindow.querySelector('.image-window__image');
+const imageWindowClose = imageWindow.querySelector('.image-window__button-close');
+
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -109,12 +114,19 @@ function createNewPlace(name, link){
   placeCard.querySelector('.element__card-text').textContent = name;
   image.src = link;
   image.alt = name;
+
   placeCard.querySelector(".element__card-heart").addEventListener("click", function (evt) {
     evt.target.classList.toggle('element__card-heart_active');
   });
   placeCard.querySelector(".element__card-trash").addEventListener("click", function(){
     placeCard.remove();
   })
+
+  image.addEventListener('click', () => {
+    imageWindowImg.src = link;
+    imageWindowImg.alt = name;
+    imageWindow.classList.add('image-window_open');
+  });
 
   return placeCard;
 }
@@ -143,6 +155,10 @@ newElementInputLink.addEventListener('input', newElementValidation);
 
 buttonEditProfileSave.addEventListener('click', saveProfile);
 buttonNewElementSave.addEventListener('click', saveNewElement);
+
+imageWindowClose.addEventListener('click', () => {
+  imageWindow.classList.remove('image-window_open');
+});
 
 initialCards.forEach(card => {
   const cardElement = createNewPlace(card.name, card.link);
