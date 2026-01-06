@@ -65,6 +65,15 @@
     outline: none;
     font-family: "Inter", Arial, Helvetica, sans-serif;
 }
+
+.form__input:invalid{
+    border-bottom: 1px red solid;
+}
+
+.form__input:valid{
+    border-bottom: 1px green solid;
+}
+
 .form__button{
     margin-top: 20px;
     padding: 12px;
@@ -79,13 +88,7 @@
 .form__button:hover{
     opacity: .7;
 }
-#new-element__button.form__button:disabled{
-    background: #f8f8f8;
-    color: #999;
-    cursor: not-allowed;
-    border-color: #999;
-}
-#edit-profile__button.form__button:disabled{
+.form__button_disabled{
     background: #f8f8f8;
     color: #999;
     cursor: not-allowed;

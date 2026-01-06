@@ -50,10 +50,9 @@ const initialCards = [
 function openFormEdit() {
   blockForms.style.display = 'block';
   blockFormEdit.style.display = 'block';
-  
+
   editName.value = profileName.textContent;
   editWork.value = profileWork.textContent;
-
 }
 
 function openFormAdd(){
@@ -65,8 +64,8 @@ function closeForm() { //Se puede mejorar codigo
   blockForms.style.display = 'none';
   blockFormEdit.style.display= 'none';
   blockFormAdd.style.display = 'none';
-  /* buttonEditProfileSave.disabled = true;
-  buttonNewElementSave.disabled = true; */
+  formEdit.reset();
+  formAdd.reset();
 }
 
 function createNewPlace(name, link){

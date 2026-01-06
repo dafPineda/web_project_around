@@ -17,7 +17,7 @@
          </header>
          <main class="main">
             <section class="forms">
-                <form class="form__container" id="new-element__form" name="formAdd">
+                <form class="form__container" id="new-element__form" name="formAdd" novalidate>
                     <button type="button" class="form__close" id="formsCloseAdd">&times;</button>
                     <h2 class="form__title">Nuevo lugar</h2>
                     <fieldset class="form__fieldset">
@@ -27,21 +27,24 @@
                         type="text"
                         placeholder="Title*"
                         name="title"
+                        minlength="3"
+                        maxlength="30"
                         required>
                         <input 
                         id="new-element__input-link"
                         type="text"
                         class="form__input"
-                        placeholder="Link*"
+                        placeholder="URL*"
                         name="link"
+                        type="url"
                         required
                         >
-                        <button type="submit" class="form__button" id="new-element__button" disabled>
+                        <button type="submit" class="form__button form__button_disabled" id="new-element__button" name="saveAdd" disabled>
                         Guardar
                         </button>
                     </fieldset>
                 </form>
-                <form class="form__container" id="edit-profile__form" name="formEdit">
+                <form class="form__container" id="edit-profile__form" name="formEdit" novalidate>
                     <button type="button" class="form__close" id="formsCloseEdit">&times;</button>
                     <h2 class="form__title">Editar perfil</h2>
                     <fieldset class="form__fieldset">
@@ -51,6 +54,8 @@
                         type="text"
                         placeholder="name*"
                         name="name"
+                        minlength="2"
+                        maxlength="40"
                         required
                         >
                         <input 
@@ -59,9 +64,11 @@
                         class="form__input"
                         placeholder="Acerca de mi*"
                         name="work"
+                        minlength="2"
+                        maxlength="400"
                         required
                         >
-                        <button type="submit" class="form__button" id="edit-profile__button" disabled>
+                        <button type="submit" class="form__button form__button_disabled" id="edit-profile__button" name="saveEdit" disabled>
                         Guardar
                         </button>
                     </fieldset>
