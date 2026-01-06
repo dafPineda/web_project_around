@@ -1,4 +1,4 @@
-.form{
+.forms{
     display:none;
     position: fixed;
     top:0;
@@ -39,6 +39,7 @@
     font-size: 60px;
     color: ghostwhite;
     cursor: pointer;
+    z-index: 99999;
 }
 .form__title{
     font-family: "inter", Arial, Helvetica, sans-serif;
