@@ -1,23 +1,21 @@
 let buttonEdit = document.querySelector('.profile__button-edit');
-let buttonNewElement = document.querySelector('.profile__button-add');
+let buttonAdd = document.querySelector('.profile__button-add');
 
-let shadow = document.querySelector('.form');
-let blockEdiProfile = document.querySelector("#edit-profile__form");
-let blockNewElement = document.querySelector("#new-element__form");
+let blockForms = document.querySelector('.forms');
+let blockFormEdit = blockForms.querySelector("#edit-profile__form");
+let blockFormAdd = blockForms.querySelector("#new-element__form");
 
-let editProfileClose = document.querySelector('#edit-profile__close');
-let newElementClose = document.querySelector('#new-element__close');
+let formCloseEdit = blockFormEdit.querySelector('#formsCloseEdit');
+let formCloseAdd = blockFormAdd.querySelector("#formsCloseAdd");
 
-let buttonEditProfileSave = document.querySelector('#edit-profile__button');
-let buttonNewElementSave = document.querySelector('#new-element__button');
+let profileName = document.querySelector('.profile__name');
+let profileWork = document.querySelector('.profile__ocupation');
 
-let inputName = document.querySelector('#profile-name');
-let inputOcupacion = document.querySelector('#profile-work'); 
-let userName = document.querySelector('.profile__name');
-let userWork = document.querySelector('.profile__ocupation');
+let formAdd = document.forms.formAdd;
+let formEdit = document.forms.formEdit;
+let editName = formEdit.elements.name;
+let editWork = formEdit.elements.work;
 
-let newElementInputName = document.querySelector('#new-element__input-name');
-let newElementInputLink = document.querySelector('#new-element__input-link');
 const elementsContainer = document.querySelector('.element');
 
 const imageWindow = document.querySelector('.image-window');
@@ -51,59 +49,31 @@ const initialCards = [
   }
 ];
 
-buttonEditProfileSave.disabled = true;
-buttonNewElementSave.disabled = true;
+function openFormEdit() {
+  blockForms.style.display = 'block';
+  blockFormEdit.style.display = 'block';
+  blockForms.addEventListener('click', cerrarFueraForms);
+  document.addEventListener('keydown', cerrarESCForm);
 
-function editProfile() {
-  shadow.style.display = 'block';
-  blockEdiProfile.style.display = 'block';
-  inputName.value = userName.textContent;
-  inputOcupacion.value = userWork.textContent;
+  editName.value = profileName.textContent;
+  editWork.value = profileWork.textContent;
 }
 
-function newElement(){
-  shadow.style.display = 'block';
-  blockNewElement.style.display = 'block';
+function openFormAdd(){
+  blockForms.style.display = 'block';
+  blockFormAdd.style.display = 'block';
+  blockForms.addEventListener('click', cerrarFueraForms);
+  document.addEventListener('keydown', cerrarESCForm);
 }
 
-function closeBlock() {
-  shadow.style.display = 'none';
-  blockEdiProfile.style.display= 'none';
-  blockNewElement.style.display = 'none';
-  buttonEditProfileSave.disabled = true;
-  buttonNewElementSave.disabled = true;
-  newElementInputName.value='';
-  newElementInputLink.value='';
-}
-
-function profileValidarCampos() {
-    let nameFull = inputName.value.trim();
-    let ocupationFull = inputOcupacion.value.trim();
-    if( nameFull !== "" && ocupationFull !== ""){
-        buttonEditProfileSave.disabled = false;
-    }else{
-        buttonEditProfileSave.disabled = true;
-    }
-}
-
-function newElementValidation() {
-    let newName = newElementInputName.value.trim();
-    let newLink = newElementInputLink.value.trim();
-    if( newName !== "" && newLink !== ""){
-        buttonNewElementSave.disabled = false;
-    }else{
-        buttonNewElementSave.disabled = true;
-    }
-}
-
-function saveProfile(){
-    userName.textContent = inputName.value.trim();
-    userWork.textContent = inputOcupacion.value.trim();
-
-    inputName.value = "";
-    inputOcupacion.value = "";
-    buttonEditProfileSave.disabled = true;
-    closeBlock();
+function closeForm() { //Se puede mejorar codigo
+  blockForms.style.display = 'none';
+  blockFormEdit.style.display= 'none';
+  blockFormAdd.style.display = 'none';
+  formEdit.reset();
+  formAdd.reset();
+  blockForms.removeEventListener('click', cerrarFueraForms);
+  document.removeEventListener('keydown', cerrarESCForm);
 }
 
 function createNewPlace(name, link){
@@ -126,38 +96,46 @@ function createNewPlace(name, link){
     imageWindowImg.src = link;
     imageWindowImg.alt = name;
     imageWindow.classList.add('image-window_open');
+    imageWindow.addEventListener('click', cerrarFueraWindow);
+    document.addEventListener('keydown', cerrarESCWindow);
   });
 
   return placeCard;
 }
 
-function saveNewElement(){
-  const newCard = createNewPlace(newElementInputName.value, newElementInputLink.value);
-  elementsContainer.prepend(newCard);
-  newElementInputName.value='';
-  newElementInputLink.value='';
-  
-  
-  closeBlock();
+function cerrarFueraForms(evt) {
+  if (evt.target === blockForms) {
+    closeForm();
+  }
 }
 
-buttonEdit.addEventListener('click', editProfile);
-buttonNewElement.addEventListener('click',newElement);
+function cerrarESCForm(evt){
+  if(evt.key === "Escape"){
+    closeForm();
+  }
+}
 
-editProfileClose.addEventListener('click', closeBlock);
-newElementClose.addEventListener('click', closeBlock);
+function cerrarFueraWindow(evt){
+  if(evt.target === document.querySelector("image-window")){
+    imageWindowClose();
+  }
+}
+function cerrarESCWindow(evt){
+  if(evt.key === "Escape"){
+    imageWindowClose();
+  }
+}
 
-inputName.addEventListener('input', profileValidarCampos);
-inputOcupacion.addEventListener('input', profileValidarCampos);
+buttonEdit.addEventListener('click', openFormEdit);
+buttonAdd.addEventListener('click', openFormAdd);
 
-newElementInputName.addEventListener('input',newElementValidation);
-newElementInputLink.addEventListener('input', newElementValidation);
-
-buttonEditProfileSave.addEventListener('click', saveProfile);
-buttonNewElementSave.addEventListener('click', saveNewElement);
+formCloseAdd.addEventListener('click', closeForm);
+formCloseEdit.addEventListener('click', closeForm);
 
 imageWindowClose.addEventListener('click', () => {
   imageWindow.classList.remove('image-window_open');
+  imageWindow.removeEventListener('click', cerrarFueraWindow);    
+  document.removeEventListener('keydown', cerrarESCWindow);
 });
 
 initialCards.forEach(card => {
