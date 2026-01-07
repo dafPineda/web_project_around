@@ -10,6 +10,8 @@ let formCloseAdd = blockFormAdd.querySelector("#formsCloseAdd");
 
 let profileName = document.querySelector('.profile__name');
 let profileWork = document.querySelector('.profile__ocupation');
+
+let formAdd = document.forms.formAdd;
 let formEdit = document.forms.formEdit;
 let editName = formEdit.elements.name;
 let editWork = formEdit.elements.work;
@@ -50,6 +52,8 @@ const initialCards = [
 function openFormEdit() {
   blockForms.style.display = 'block';
   blockFormEdit.style.display = 'block';
+  blockForms.addEventListener('click', cerrarFueraForms);
+  document.addEventListener('keydown', cerrarESCForm);
 
   editName.value = profileName.textContent;
   editWork.value = profileWork.textContent;
@@ -58,6 +62,8 @@ function openFormEdit() {
 function openFormAdd(){
   blockForms.style.display = 'block';
   blockFormAdd.style.display = 'block';
+  blockForms.addEventListener('click', cerrarFueraForms);
+  document.addEventListener('keydown', cerrarESCForm);
 }
 
 function closeForm() { //Se puede mejorar codigo
@@ -66,6 +72,8 @@ function closeForm() { //Se puede mejorar codigo
   blockFormAdd.style.display = 'none';
   formEdit.reset();
   formAdd.reset();
+  blockForms.removeEventListener('click', cerrarFueraForms);
+  document.removeEventListener('keydown', cerrarESCForm);
 }
 
 function createNewPlace(name, link){
@@ -88,9 +96,34 @@ function createNewPlace(name, link){
     imageWindowImg.src = link;
     imageWindowImg.alt = name;
     imageWindow.classList.add('image-window_open');
+    imageWindow.addEventListener('click', cerrarFueraWindow);
+    document.addEventListener('keydown', cerrarESCWindow);
   });
 
   return placeCard;
+}
+
+function cerrarFueraForms(evt) {
+  if (evt.target === blockForms) {
+    closeForm();
+  }
+}
+
+function cerrarESCForm(evt){
+  if(evt.key === "Escape"){
+    closeForm();
+  }
+}
+
+function cerrarFueraWindow(evt){
+  if(evt.target === document.querySelector("image-window")){
+    imageWindowClose();
+  }
+}
+function cerrarESCWindow(evt){
+  if(evt.key === "Escape"){
+    imageWindowClose();
+  }
 }
 
 buttonEdit.addEventListener('click', openFormEdit);
@@ -101,6 +134,8 @@ formCloseEdit.addEventListener('click', closeForm);
 
 imageWindowClose.addEventListener('click', () => {
   imageWindow.classList.remove('image-window_open');
+  imageWindow.removeEventListener('click', cerrarFueraWindow);    
+  document.removeEventListener('keydown', cerrarESCWindow);
 });
 
 initialCards.forEach(card => {

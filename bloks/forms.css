@@ -66,12 +66,18 @@
     font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
-.form__input:invalid{
-    border-bottom: 1px red solid;
+.form__input-error{
+    color:red;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    opacity: 0;
 }
 
-.form__input:valid{
-    border-bottom: 1px green solid;
+.form__input-error_active{
+    opacity: 1;
+}
+
+.form__input_type_error {
+  border-bottom: 1px solid red;
 }
 
 .form__button{

@@ -27,18 +27,19 @@
                         type="text"
                         placeholder="Title*"
                         name="title"
-                        minlength="3"
+                        minlength="2"
                         maxlength="30"
                         required>
+                        <span class="form__input-error new-element__input-name-error">El campo "Título" debe contener entre 2 y 30 caracteres.</span>
                         <input 
                         id="new-element__input-link"
-                        type="text"
                         class="form__input"
                         placeholder="URL*"
                         name="link"
                         type="url"
                         required
                         >
+                        <span class="form__input-error new-element__input-link-error">El campo "URL de la imagen" debe contener una URL.</span>
                         <button type="submit" class="form__button form__button_disabled" id="new-element__button" name="saveAdd" disabled>
                         Guardar
                         </button>
@@ -58,6 +59,7 @@
                         maxlength="40"
                         required
                         >
+                        <span class="form__input-error profile-name-error">El campo "Nombre" debe contener entre 2 y 40 caracteres.</span>
                         <input 
                         id="profile-work"
                         type="text"
@@ -65,9 +67,10 @@
                         placeholder="Acerca de mi*"
                         name="work"
                         minlength="2"
-                        maxlength="400"
+                        maxlength="200"
                         required
                         >
+                        <span class="form__input-error profile-work-error">El campo "Acerca de" debe contener entre 2 y 200 caracteres.</span>
                         <button type="submit" class="form__button form__button_disabled" id="edit-profile__button" name="saveEdit" disabled>
                         Guardar
                         </button>
@@ -109,6 +112,6 @@
          </footer>
     </div>
    <script src="scripts/index.js"></script>
-   <script src="scripts/validation.js"></script>
+   <script src="scripts/validate.js"></script>
 </body>
 </html>

@@ -1,90 +1,85 @@
-//Variables
-let formAdd = document.forms.formAdd;
-let saveAdd = formAdd.elements.saveAdd;
+let saveAdd = formAdd.elements.saveAdd; 
 let saveEdit = formEdit.elements.saveEdit;
-
-let addTitle = formAdd.elements.title;
+let addTitle = formAdd.elements.title; 
 let addLink = formAdd.elements.link;
 
-function setButton(isValid){
+const enableValidation = () => {
+    const formList = Array.from(document.querySelectorAll('.form__container'));
+
+    formList.forEach(function(formElement){
+        formElement.addEventListener('submit', function (evt){
+            evt.preventDefault();
+        })
+
+        setEventListeners(formElement);
+    })
+}
+function setEventListeners (formElement){
+    const inputList = Array.from(formElement.querySelectorAll(".form__input"));
+    const buttonElement = formElement.querySelector('.form__button');
+
+    toggleButtonState(inputList, buttonElement);
+    inputList.forEach(function(inputElement){
+        inputElement.addEventListener('input', function(){
+            isValid(formElement,inputElement);
+            toggleButtonState(inputList, buttonElement);
+        })
+    })
+}
+function toggleButtonState(inputList, buttonElement){
+    if(hasInvalidInput(inputList)){
+        setButton(buttonElement, false);
+    }else{
+        setButton(buttonElement, true);
+    }
+}
+function hasInvalidInput(inputList){
+    return inputList.some(function (inputElement){
+        return !inputElement.validity.valid;
+    })
+}
+function setButton(buttonElement, isValid){
     if(isValid){
-        saveEdit.removeAttribute("disabled");
-        saveEdit.classList.remove("form__button_disabled");
-        saveAdd.removeAttribute('disabled');
-        saveAdd.classList.remove("form__button_disabled");
+        buttonElement.removeAttribute("disabled");
+        buttonElement.classList.remove("form__button_disabled");
     }else{
-        saveEdit.setAttribute("disabled", true);
-        saveEdit.classList.add("form__button_disabled");
-        saveAdd.setAttribute("disabled", true);
-        saveAdd.classList.add("form__button_disabled");
+        buttonElement.setAttribute("disabled", true);
+        buttonElement.classList.add("form__button_disabled");
     }
 }
-
-formEdit.addEventListener('submit', function (evt){
-    evt.preventDefault();
-    profileName.textContent = editName.value;
-    profileWork.textContent = editWork.value;
-
-    formEdit.reset();
-    setButton(false);
-    closeForm();
-});
-
-formAdd.addEventListener('submit', function(evt){ //Se activa cuando no tiene url
-    evt.preventDefault();
-    const newCard = createNewPlace(addTitle.value, addLink.value);
-    elementsContainer.prepend(newCard);
-    
-    formAdd.reset();
-    closeForm();
-});
-
-formEdit.addEventListener('input', function(evt){
-    const isValid = editName.value.length > 2 && editName.value.length < 40 &&
-                    editWork.value.length > 2 && editWork.value.length < 200;
-    setButton(isValid); //evt.target.validity.valid
-});
-
-formAdd.addEventListener('input', function(evt){
-    const isValid = addTitle.value.length > 2 && addTitle.value.length < 30;
-    setButton(isValid);
-})
-
-/* const formsProfile = document.forms["form__profile"];
-const formsElement = document.forms["form__new-Element"];
-
-newElementInputName = document.querySelector('#new-element__input-name');
-newElementInputLink = document.querySelector('#new-element__input-link');
-let ProfileInputName = document.querySelector('#profile-name');
-let inputOcupacion = document.querySelector('#profile-work');
-
-let newElementInputName = document.querySelector('#new-element__input-name');
-let newElementInputLink = document.querySelector('#new-element__input-link');
-
-let buttonEditProfileSave = document.querySelector('#edit-profile__button');
-let buttonNewElementSave = document.querySelector('#new-element__button');
-
-inputName = document.querySelector('#profile-name');
-inputOcupacion = document.querySelector('#profile-work'); 
-
-
-
-function newElementValidation() {
-    let newName = newElementInputName.value.trim();
-    let newLink = newElementInputLink.value.trim();
-    if( newName !== "" && newLink !== ""){
-        buttonNewElementSave.disabled = false;
+function isValid(formElement, inputElement){
+    if(!inputElement.validity.valid){
+        showInputError(formElement, inputElement, inputElement.validationMessage)
     }else{
-        buttonNewElementSave.disabled = true;
+        hideInputError(formElement, inputElement);
     }
 }
+function showInputError(formElement, inputElement, errorMessage){
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.add('form__input_type_error');
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add('form__input-error_active');
+}
+function hideInputError(formElement, inputElement){
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove('form__input_type_error')
+    errorElement.textContent = "";
+    errorElement.classList.remove('form__input-error_active');
+}
 
+formEdit.addEventListener('submit', function (evt){ evt.preventDefault(); 
+    profileName.textContent = editName.value; 
+    profileWork.textContent = editWork.value; 
+    formEdit.reset(); 
+    setButton(saveEdit, false); 
+    closeForm(); }); 
+formAdd.addEventListener('submit', function(evt){ //Se activa cuando no tiene url 
+    evt.preventDefault(); 
+    const newCard = createNewPlace(addTitle.value, addLink.value); 
+    elementsContainer.prepend(newCard); 
+    formAdd.reset(); 
+    setButton(saveAdd, false);
+    closeForm(); 
+});
 
-
-
-
-inputName.addEventListener('input', profileValidarCampos);
-inputOcupacion.addEventListener('input', profileValidarCampos);
-
-newElementInputName.addEventListener('input',newElementValidation);
-newElementInputLink.addEventListener('input', newElementValidation); */
+enableValidation();
