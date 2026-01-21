@@ -5,12 +5,12 @@ let addLink = formAdd.elements.link;
 
 const enableValidation = () => {
     const formList = Array.from(document.querySelectorAll('.form__container'));
-
+    
     formList.forEach(function(formElement){
         formElement.addEventListener('submit', function (evt){
             evt.preventDefault();
         })
-
+        
         setEventListeners(formElement);
     })
 }
@@ -83,3 +83,6 @@ formAdd.addEventListener('submit', function(evt){ //Se activa cuando no tiene ur
 });
 
 enableValidation();
+class FormValidator{
+
+}

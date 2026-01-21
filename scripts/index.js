@@ -18,10 +18,6 @@ let editWork = formEdit.elements.work;
 
 const elementsContainer = document.querySelector('.element');
 
-const imageWindow = document.querySelector('.image-window');
-const imageWindowImg = imageWindow.querySelector('.image-window__image');
-const imageWindowClose = imageWindow.querySelector('.image-window__button-close');
-
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -54,7 +50,7 @@ function openFormEdit() {
   blockFormEdit.style.display = 'block';
   blockForms.addEventListener('click', cerrarFueraForms);
   document.addEventListener('keydown', cerrarESCForm);
-
+  
   editName.value = profileName.textContent;
   editWork.value = profileWork.textContent;
 }
@@ -76,32 +72,6 @@ function closeForm() { //Se puede mejorar codigo
   document.removeEventListener('keydown', cerrarESCForm);
 }
 
-function createNewPlace(name, link){
-  const template = document.querySelector('.template-element').content;
-  const placeCard = template.querySelector('.element__card').cloneNode(true);
-  const image = placeCard.querySelector('.element__card-image');
-
-  placeCard.querySelector('.element__card-text').textContent = name;
-  image.src = link;
-  image.alt = name;
-
-  placeCard.querySelector(".element__card-heart").addEventListener("click", function (evt) {
-    evt.target.classList.toggle('element__card-heart_active');
-  });
-  placeCard.querySelector(".element__card-trash").addEventListener("click", function(){
-    placeCard.remove();
-  })
-
-  image.addEventListener('click', () => {
-    imageWindowImg.src = link;
-    imageWindowImg.alt = name;
-    imageWindow.classList.add('image-window_open');
-    imageWindow.addEventListener('click', cerrarFueraWindow);
-    document.addEventListener('keydown', cerrarESCWindow);
-  });
-
-  return placeCard;
-}
 
 function cerrarFueraForms(evt) {
   if (evt.target === blockForms) {
@@ -116,7 +86,7 @@ function cerrarESCForm(evt){
 }
 
 function cerrarFueraWindow(evt){
-  if(evt.target === document.querySelector("image-window")){
+  if(evt.target === document.querySelector(".image-window")){
     imageWindowClose();
   }
 }
@@ -132,13 +102,90 @@ buttonAdd.addEventListener('click', openFormAdd);
 formCloseAdd.addEventListener('click', closeForm);
 formCloseEdit.addEventListener('click', closeForm);
 
-imageWindowClose.addEventListener('click', () => {
-  imageWindow.classList.remove('image-window_open');
-  imageWindow.removeEventListener('click', cerrarFueraWindow);    
-  document.removeEventListener('keydown', cerrarESCWindow);
-});
+class Card{
+  constructor(cardText, cardImage){
+    this._cardText=cardText;
+    this._cardImage=cardImage;
+  }
+  _duplicateTemplate(){
+    const placeCard = document.querySelector(".template-element").content.querySelector('.element__card').cloneNode(true);
+    return placeCard;
+  }
+  generateCard(){
+    /*Duplicate the template */
+     this._newCard = this._duplicateTemplate();
+    //Values
+    this._newCard.querySelector('.element__card-text').textContent = this._cardText;
+    this._newCard.querySelector(".element__card-image").src = this._cardImage;
+    this._newCard.querySelector(".element__card-image").alt = this._cardText;
+    
+    this._like();
+    this._trash();
+    this._clickImage();
+    
+    return this._newCard;
+  }
+  _like(){
+    const heart = this._newCard.querySelector(".element__card-heart")
+    heart.addEventListener("click", function (evt) {
+      evt.target.classList.toggle('element__card-heart_active');
+    });
+  }
+  _trash(){
+    const trash = this._newCard.querySelector(".element__card-trash");
+    trash.addEventListener("click", ()=>{
+      this._newCard.remove();
+    })
+  }
+  _clickImage(){
+    const image = this._newCard.querySelector(".element__card-image");
+    image.addEventListener('click', ()=>{
+      this._openImage();
+    });
+  }
+  _openImage(){
+    const image = this._newCard.querySelector(".element__card-image");
+    image.removeEventListener('click', ()=>{
+      this._openImage();
+    });
+
+    const imagePopup = document.querySelector(".image-window");
+    imagePopup.classList.add('image-window_open');
+      
+    imagePopup.querySelector('.image-window__image').src = this._cardImage;
+    imagePopup.querySelector('.image-window__image').alt = this._cardText;
+
+    const imageClose = imagePopup.querySelector('.image-window__button-close');
+    imageClose.addEventListener('click', ()=>{
+      this._closeImage();
+    });
+    this._specialClose = (evt) =>{
+      console.log('entro');
+      console.log(evt.target.value);
+      if(evt.target === 'Escape'){
+        this._closeImage();
+      }else if(evt.target === document.querySelector('.image-Window') ){
+        console.log('entro');
+        this._closeImage();
+      }
+    }
+    imagePopup.addEventListener('keydown', this._specialClose);
+    imagePopup.addEventListener('click', this._specialClose);
+  }
+  _closeImage(){
+    const imagePopup = document.querySelector(".image-window");
+
+    imagePopup.classList.remove('image-window_open');
+    imagePopup.removeEventListener('click', ()=>{
+      this._closeImage();
+    });  
+    imagePopup.removeEventListener('keydown', this._specialClose);
+    imagePopup.removeEventListener('click', this._specialClose);
+  }
+}
 
 initialCards.forEach(card => {
-  const cardElement = createNewPlace(card.name, card.link);
-  elementsContainer.append(cardElement);
+  const cardElement = new Card(card.name, card.link);
+  const cardHTML = cardElement.generateCard();
+  elementsContainer.append(cardHTML);
 });
