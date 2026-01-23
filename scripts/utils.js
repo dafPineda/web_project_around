@@ -1,66 +1,55 @@
-const buttonEdit = document.querySelector('.profile__button-edit');
-const buttonAdd = document.querySelector('.profile__button-add');
-  
-const blockForms = document.querySelector('.forms');
-const blockFormEdit = blockForms.querySelector("#edit-profile__form");
-const blockFormAdd = blockForms.querySelector("#new-element__form");
+//(function(){
+    const buttonEdit = document.querySelector('.profile__button-edit');
+    const buttonAdd = document.querySelector('.profile__button-add');
+    const blockForms = document.querySelector('.forms');
+    const formAdd = document.forms.formAdd;
+    const formEdit = document.forms.formEdit;
+    
+    const formCloseEdit = formEdit.querySelector('#formsCloseEdit');
+    const formCloseAdd = formAdd.querySelector("#formsCloseAdd");
+    
+    const profileName = document.querySelector('.profile__name');
+    const profileWork = document.querySelector('.profile__ocupation');
+    
+    function openForm(evt) {
+        if(evt.target === buttonAdd ){
+            blockForms.style.display = 'block';
+            formAdd.style.display = 'block';
+        } 
+        else{
+            blockForms.style.display = 'block';
+            formEdit.style.display = 'block';
+            const name = formEdit.querySelector("#profile-name");
+            const work = formEdit.querySelector("#profile-work");
+            name.value = profileName.textContent;
+            work.value = profileWork.textContent;
+        }
+        blockForms.addEventListener('click', specialClose);
+        document.addEventListener('keydown', specialClose);
+        formCloseAdd.addEventListener('click', closeForm);
+        formCloseEdit.addEventListener('click', closeForm);
+    }
 
-const formCloseEdit = blockFormEdit.querySelector('#formsCloseEdit');
-const formCloseAdd = blockFormAdd.querySelector("#formsCloseAdd");
-
-const profileName = document.querySelector('.profile__name');
-const profileWork = document.querySelector('.profile__ocupation');
-  
-const formAdd = document.forms.formAdd;
-const formEdit = document.forms.formEdit;
-const editName = formEdit.elements.name;
-const editWork = formEdit.elements.work;
-
-
-function openFormEdit() {
-  blockForms.style.display = 'block';
-  blockFormEdit.style.display = 'block';
-  blockForms.addEventListener('click', cerrarFueraForms);
-  document.addEventListener('keydown', cerrarESCForm);
-  
-  editName.value = profileName.textContent;
-  editWork.value = profileWork.textContent;
-}
-
-function openFormAdd(){
-  blockForms.style.display = 'block';
-  blockFormAdd.style.display = 'block';
-  blockForms.addEventListener('click', cerrarFueraForms);
-  document.addEventListener('keydown', cerrarESCForm);
-}
-
-function closeForm() { //Se puede mejorar codigo
-  blockForms.style.display = 'none';
-  blockFormEdit.style.display= 'none';
-  blockFormAdd.style.display = 'none';
-  formEdit.reset();
-  formAdd.reset();
-  blockForms.removeEventListener('click', cerrarFueraForms);
-  document.removeEventListener('keydown', cerrarESCForm);
-}
+    function specialClose(evt) {
+        if (evt.target === blockForms) closeForm();
+        else if(evt.key === "Escape")closeForm();
+    }
+    
+    function closeForm() { 
+        blockForms.style.display = 'none';
+        formEdit.style.display= 'none';
+        formAdd.style.display = 'none';
+        formEdit.reset();
+        formAdd.reset();
+        blockForms.removeEventListener('click', specialClose);
+        document.removeEventListener('keydown', specialClose);
+        formCloseAdd.removeEventListener('click', closeForm);
+        formCloseEdit.removeEventListener('click', closeForm);
+    }
+    
+buttonEdit.addEventListener('click', openForm);
+buttonAdd.addEventListener('click', openForm);
 
 
-function cerrarFueraForms(evt) {
-  if (evt.target === blockForms) {
-    closeForm();
-  }
-}
-
-function cerrarESCForm(evt){
-  if(evt.key === "Escape"){
-    closeForm();
-  }
-}
-
-buttonEdit.addEventListener('click', openFormEdit);
-buttonAdd.addEventListener('click', openFormAdd);
-
-formCloseAdd.addEventListener('click', closeForm);
-formCloseEdit.addEventListener('click', closeForm);
-
-export{formEdit, formAdd, profileName, profileWork, editName, editWork, closeForm};
+//})()
+export{formEdit, formAdd, profileName, profileWork,openForm, closeForm};
