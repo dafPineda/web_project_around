@@ -16,9 +16,9 @@
             <hr class="header__line">
          </header>
          <main class="main">
-            <section class="form">
-                <form class="form__container" id="new-element__form">
-                    <button type="button" class="form__close" id="new-element__close">&times;</button>
+            <section class="forms">
+                <form class="form__container" id="new-element__form" name="formAdd" novalidate>
+                    <button type="button" class="form__close" id="formsCloseAdd">&times;</button>
                     <h2 class="form__title">Nuevo lugar</h2>
                     <fieldset class="form__fieldset">
                         <input 
@@ -26,38 +26,52 @@
                         class="form__input"
                         type="text"
                         placeholder="Title*"
+                        name="title"
+                        minlength="2"
+                        maxlength="30"
                         required>
+                        <span class="form__input-error new-element__input-name-error">El campo "Título" debe contener entre 2 y 30 caracteres.</span>
                         <input 
                         id="new-element__input-link"
-                        type="text"
                         class="form__input"
-                        placeholder="Link*"
+                        placeholder="URL*"
+                        name="link"
+                        type="url"
                         required
                         >
-                        <button type="button" class="form__button" id="new-element__button" disabled>
+                        <span class="form__input-error new-element__input-link-error">El campo "URL de la imagen" debe contener una URL.</span>
+                        <button type="submit" class="form__button form__button_disabled" id="new-element__button" name="saveAdd" disabled>
                         Guardar
                         </button>
                     </fieldset>
                 </form>
-                <form class="form__container" id="edit-profile__form">
-                    <button type="button" class="form__close" id="edit-profile__close">&times;</button>
+                <form class="form__container" id="edit-profile__form" name="formEdit" novalidate>
+                    <button type="button" class="form__close" id="formsCloseEdit">&times;</button>
                     <h2 class="form__title">Editar perfil</h2>
                     <fieldset class="form__fieldset">
                         <input 
                         id="profile-name"
                         class="form__input"
                         type="text"
-                        placeholder="Nombre*"
+                        placeholder="name*"
+                        name="name"
+                        minlength="2"
+                        maxlength="40"
                         required
                         >
+                        <span class="form__input-error profile-name-error">El campo "Nombre" debe contener entre 2 y 40 caracteres.</span>
                         <input 
                         id="profile-work"
                         type="text"
                         class="form__input"
                         placeholder="Acerca de mi*"
+                        name="work"
+                        minlength="2"
+                        maxlength="200"
                         required
                         >
-                        <button type="button" class="form__button" id="edit-profile__button" disabled>
+                        <span class="form__input-error profile-work-error">El campo "Acerca de" debe contener entre 2 y 200 caracteres.</span>
+                        <button type="submit" class="form__button form__button_disabled" id="edit-profile__button" name="saveEdit" disabled>
                         Guardar
                         </button>
                     </fieldset>
@@ -79,19 +93,33 @@
             <section class="element" id="element">
                 <template class="template-element">
                     <div class="element__card">
-                        <img class="element__card-image" src="" alt="">                    
+                        <button class="element__card-trash" type="button"></button>
+                        <img class="element__card-image" src="#" alt="#">                  
                         <div class="element__card-info">
                             <p class="element__card-text"></p>
                             <button class="element__card-heart" type="button"></button>
                         </div>
                     </div>
                 </template>
+                <div class="image-window">
+                    <button class="image-window__button-close">&times;</button>
+                    <img class="image-window__image" src="#" alt="#">
+                </div>
             </section>
          </main>
          <footer class="footer">
             <p class="footer__copyright">© 2025 Aroud The U.S.</p>
          </footer>
     </div>
-   <script src="scripts/index.js"></script>
+    <script type="module" src="./components/Section.js"></script>
+    <script type="module" src="./components/Card.js"></script>
+    <!-- <script type="module" src="components/FormValidator.js"></script>
+    <script type="module" src="components/Popup.js"></script> -->
+    <!-- <script type="module" src="./components/PopupWithForms.js"></script>
+    <script type="module" src="./components/PopupWithImage.js"></script> -->
+    <!-- <script type="module" src="./components/UserInfo.js"></script>
+    <script type="module" src="utils/utils.js"></script>
+    <script type="module" src="utils/constants.js"></script> -->
+   <script type="module" src="pages/index.js"></script>
 </body>
 </html>

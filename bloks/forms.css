@@ -1,4 +1,4 @@
-.form{
+.forms{
     display:none;
     position: fixed;
     top:0;
@@ -39,6 +39,7 @@
     font-size: 60px;
     color: ghostwhite;
     cursor: pointer;
+    z-index: 99999;
 }
 .form__title{
     font-family: "inter", Arial, Helvetica, sans-serif;
@@ -64,6 +65,21 @@
     outline: none;
     font-family: "Inter", Arial, Helvetica, sans-serif;
 }
+
+.form__input-error{
+    color:red;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    opacity: 0;
+}
+
+.form__input-error_active{
+    opacity: 1;
+}
+
+.form__input_type_error {
+  border-bottom: 1px solid red;
+}
+
 .form__button{
     margin-top: 20px;
     padding: 12px;
@@ -75,13 +91,10 @@
     color: #fff;
     cursor: pointer;
 }
-#new-element__button.form__button:disabled{
-    background: #f8f8f8;
-    color: #999;
-    cursor: not-allowed;
-    border-color: #999;
+.form__button:hover{
+    opacity: .7;
 }
-#edit-profile__button.form__button:disabled{
+.form__button_disabled{
     background: #f8f8f8;
     color: #999;
     cursor: not-allowed;
@@ -99,7 +112,7 @@
         padding: 30px 30px;
     }
     .form__close{
-        right: 0vw;
+        right: -40px;
     }
     .form__title{
         margin:0;
