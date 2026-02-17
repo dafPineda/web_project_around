@@ -50,6 +50,10 @@
     justify-content: center;
     align-items: center;
 }
+.image-window_open {
+  display: flex;
+  z-index: 1;
+}
 .image-window__button-close{
     margin: 0;
     position: absolute;
@@ -110,9 +114,8 @@
         padding:50px 7vw;
     }
     .image-window__button-close{
-        top: 45px;
-        right: 50px;
-        font-size: 70px;
+        top: 320px;
+        right: 15px;
     }
 }
 @media (max-width:544px) {
@@ -124,11 +127,6 @@
     }
     .element__card-heart{
         width:30px;
-        font-size: 40px;
-    }
-    .image-window__button-close{
-        top: 180px;
-        right: 12px;
         font-size: 40px;
     }
 }
