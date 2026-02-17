@@ -1,5 +1,3 @@
-import { submit as submitLogic } from "./index.js";
-
 export default class FormValidator{
     constructor(formElement, inputList){
         this._formElement = formElement;
@@ -62,7 +60,6 @@ export default class FormValidator{
     
     _submit(evt){
         evt.preventDefault();
-        submitLogic(this._formElement);
         this._setButton(false);
     }
 }
