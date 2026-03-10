@@ -1,5 +1,5 @@
-import {initialCards, formList, inputName, inputWork, buttonEdit, buttonAdd} from "../utils/constants.js";
-import Section from "../components/Section.js";
+import {initialCards, formList, inputName, inputWork, buttonEdit, buttonAdd} from "../src/utils/constants.js";
+import Section from "../src/components/Section.js";
 import  Card  from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -59,8 +59,8 @@ formList.forEach(function(formElement){
   const newValidator = new FormValidator(formElement, inputList);
   newValidator.enableValidation();
 }); 
-
 elements.renderer();
+console.log("llego index")
 addPopup.setEventListeners()
 editPopup.setEventListeners()
 imagePopup.setEventListeners()
