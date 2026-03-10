@@ -32,12 +32,3 @@ export const buttonEdit = document.querySelector('.profile__button-edit');
 export const buttonAdd = document.querySelector('.profile__button-add');
 export const inputName = document.querySelector("#profile-name");
 export const inputWork = document.querySelector("#profile-work");
-
-
-/* import Api from "../src/utils/api.js";
-
-const api = new Api("https://around-api.es.tripleten-services.com/v1", {Authorization:"39e7e87b-63d8-4747-bf9f-2089ed281080", "Content-Type": "application/json"})
-api.getAppInfo()
-function handleCardClick(link) {
-  imagePopup.open(link)
-} */

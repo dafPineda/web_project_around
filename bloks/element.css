@@ -42,33 +42,7 @@
     background-size: cover;
     background-position: center;
 }
-.image-window{
-    display: none;
-    position:fixed;
-    inset: 0;
-    background: rgba(0,0,0,.8);
-    justify-content: center;
-    align-items: center;
-}
-.image-window_open {
-  display: flex;
-  z-index: 1;
-}
-.image-window__button-close{
-    margin: 0;
-    position: absolute;
-    top:80px;
-    right: 100px;
-    background: none;
-    border: none;
-    font-size: 80px;
-    color: ghostwhite;
-    cursor: pointer;
-}
-.image-window__image{
-    max-width: 75vw;
-    max-height: 75vh;
-}
+
 .element__card-info{
     display: flex;
     align-items: center;
@@ -108,6 +82,36 @@
   opacity: 1;
   background: url(https://practicum-content.s3.us-west-1.amazonaws.com/web-code/dom/moved_heart-filled.svg) center no-repeat;
 }
+
+.image-window{
+    display: none;
+    position:fixed;
+    inset: 0;
+    background: rgba(0,0,0,.8);
+    justify-content: center;
+    align-items: center;
+}
+.image-window_open {
+  display: flex;
+  z-index: 1;
+}
+.image-window__button-close{
+    margin: 0;
+    position: absolute;
+    top:80px;
+    right: 100px;
+    background: none;
+    border: none;
+    font-size: 80px;
+    color: ghostwhite;
+    cursor: pointer;
+}
+.image-window__image{
+    max-width: 75vw;
+    max-height: 75vh;
+}
+
+
 
 @media (max-width:1024px) {
     .element{

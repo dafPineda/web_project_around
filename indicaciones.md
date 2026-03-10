@@ -32,3 +32,7 @@ PopupWithConfirmation
 
 * Botones de edicion diciendo "Guardandose"
 estos deben mostrar la palabra hasta que el proceso se acabe
+
+
+
+https://tse3.mm.bing.net/th/id/OIP._aOLiWheHCJjn6gbe_81zwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3
