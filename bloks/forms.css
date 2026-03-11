@@ -4,18 +4,9 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.form__container{
-    position: fixed;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.form__block{
     align-items: center;
     justify-content: center;
-    background-color: ghostwhite;
-    padding: 40px;
-    border-radius: 10px;
-}
-.form__block{
     background-color: ghostwhite;
     border-radius: 10px;
     width:50vw;

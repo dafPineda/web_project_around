@@ -1,14 +1,19 @@
 import {initialCards, formList, inputName, inputWork, buttonEdit, buttonAdd} from "../src/utils/constants.js";
 import Section from "../src/components/Section.js";
-import  Card  from "../components/Card.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import FormValidator from "../components/formValidator.js";
-import UserInfo from "../components/UserInfo.js";
+import Card from "../src/components/Card.js";
+import PopupWithImage from "../src/components/PopupWithImage.js";
+import PopupWithForm from "../src/components/PopupWithForm.js";
+import PopupWithConfirmation from "../src/components/PopupWithConfirmation.js";
+import FormValidator from "../src/components/FormValidator.js"
+import UserInfo from "../src/components/UserInfo.js"
 import Api from "../src/utils/api.js";
 
 function handleCardClick(link) {
   imagePopup.open(link)
+}
+function handleDelete(card){
+  confirmation.open();
+  confirmation.setCardToDelete(card)
 }
 
 const api = new Api("https://around-api.es.tripleten-services.com/v1", {Authorization:"39e7e87b-63d8-4747-bf9f-2089ed281080", "Content-Type": "application/json"})
@@ -30,7 +35,7 @@ api.getAppInfo()
  elements = new Section({
   items: initialCards,
   renderer: (item)=>{
-    const cardElement = new Card(item.name, item.link, handleCardClick);
+    const cardElement = new Card(item.name, item.link, handleCardClick, handleDelete);
     const cardHTML = cardElement.generateCard();
     return cardHTML;
   }
@@ -54,8 +59,9 @@ const editPopup = new PopupWithForm(
         work:data.about
       })
     })
-    .catch(err => console.log(erro))
+    .catch(err => console.log(err))
 })
+const confirmation = new PopupWithConfirmation('#confirmation__form')
 
 buttonEdit.addEventListener("click", () => {
   const profile = userInfo.getUserInfo()
@@ -79,3 +85,4 @@ elements.renderer();
 addPopup.setEventListeners()
 editPopup.setEventListeners()
 imagePopup.setEventListeners()
+confirmation.setEventListeners()
