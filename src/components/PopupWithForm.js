@@ -4,9 +4,9 @@ export default class PopupWithForm extends Popup{
     constructor(popupSelector, handleForm){
         super(popupSelector)
         this._handleForm = handleForm
-        
         this._form = document.querySelector(popupSelector)
         this._inputList = this._form.querySelectorAll('.form__input')
+        this._submitButton = this._form.querySelector('.form__button')
     }
     open(){
         super.open();
@@ -30,4 +30,11 @@ export default class PopupWithForm extends Popup{
         super.close()
         this._form.reset()
     } 
+    setLoading(isLoading){
+        if(isLoading){
+            this._submitButton.textContent = "Guardando..."
+        } else {
+            this._submitButton.textContent = "Guardar"
+        }
+    }
 }

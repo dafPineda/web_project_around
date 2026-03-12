@@ -33,6 +33,10 @@ PopupWithConfirmation
 * Botones de edicion diciendo "Guardandose"
 estos deben mostrar la palabra hasta que el proceso se acabe
 
+  /* Origin Jacques Cousteau Explorador */
 
-
+playa
 https://tse3.mm.bing.net/th/id/OIP._aOLiWheHCJjn6gbe_81zwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3
+
+playa
+https://static.vecteezy.com/system/resources/thumbnails/012/508/173/small/paradise-island-beach-tropical-landscape-of-summer-scenic-sea-sand-sky-with-palm-trees-luxury-travel-vacation-destination-exotic-beach-landscape-amazing-nature-relax-freedom-nature-template-photo.jpg

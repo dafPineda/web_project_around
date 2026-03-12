@@ -3,11 +3,11 @@ import Section from "../src/components/Section.js";
 import Card from "../src/components/Card.js";
 import PopupWithImage from "../src/components/PopupWithImage.js";
 import PopupWithForm from "../src/components/PopupWithForm.js";
+import PopupWithPhoto from "../src/components/PopupWithPhoto.js";
 import PopupWithConfirmation from "../src/components/PopupWithConfirmation.js";
 import FormValidator from "../src/components/FormValidator.js"
 import UserInfo from "../src/components/UserInfo.js"
 import Api from "../src/utils/api.js";
-import PopupWithPhoto from "../src/components/PopupWithPhoto.js";
 
 function clickImage(link){
   imagePopup.open(link)
@@ -17,7 +17,9 @@ function clickTrash(card, id){
     confirmation.setCardToDelete(card, id)
 }
 function cardDelete(id) {
+  confirmation.setLoading(true)
   api.deleteCard(id)
+  .finally(()=> confirmation.setLoading(false))
 }
 function cardLike(id, heartActive){
   if(heartActive){
@@ -69,6 +71,7 @@ api.getAppInfo()
 const addPopup = new PopupWithForm(
   '#new-element__form', 
   (data) =>{
+    addPopup.setLoading(true)
     api.addCard({name:data.title, link:data.link})
     .then(data=>{
       const cardElement = new Card(data.name, data.link, data._id, data.isLiked, 
@@ -79,11 +82,13 @@ const addPopup = new PopupWithForm(
       elements.addItem(cardHTML, true)
     })
     .catch(err => console.log(err))
+    .finally(()=>addPopup.setLoading(false))
   }
 )
 const editPopup = new PopupWithForm(
   '#edit-profile__form',
    (data)=>{
+    editPopup.setLoading(true)
     api.editUserInfo({name:data.name, about:data.work})
     .then(data =>{
       userInfo.setUserInfo({
@@ -92,14 +97,17 @@ const editPopup = new PopupWithForm(
       })
     })
     .catch(err => console.log(err))
+    .finally(()=> editPopup.setLoading(false))
 })
 const editPhotoProfile = new PopupWithPhoto("#editPhotoProfile", 
   (link)=>{
+    editPhotoProfile.setLoading(true)
     api.editUserPhoto(link)
     .then(res=>{
       changePhoto(res.avatar)
     })
     .catch(err=>console.log(err))
+    .finally(()=>editPhotoProfile.setLoading(false))
   }
 )
 

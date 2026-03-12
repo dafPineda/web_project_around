@@ -30,7 +30,6 @@ export default class Api{
     .then(res=> this._checkError(res))
     .catch((err) => console.log(err))
   }
-  /* Origin Jacques Cousteau Explorador */
   editUserInfo(data){
     return fetch(`${this.baseUrl}/users/me`, {
       method: "PATCH",
@@ -82,7 +81,7 @@ export default class Api{
     .catch((err) => console.log(err))
   }
   deleteCard(id){
-    fetch(`${this.baseUrl}/cards/${id}`,{
+    return fetch(`${this.baseUrl}/cards/${id}`,{
       method: "DELETE",
       headers:this.headers
     })

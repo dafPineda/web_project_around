@@ -7,6 +7,7 @@ export default class PopupWithConfirmation extends Popup {
     this._card = null
     this._cardId = null
     this._handleCardDelete = handleDelete
+    this._submitButton = this._form.querySelector(".form__button")
   }
   setCardToDelete(card, id){
     this._card = card
@@ -24,5 +25,12 @@ export default class PopupWithConfirmation extends Popup {
   close() {
     super.close();
     this._form.reset();
+  }
+  setLoading(isLoading){
+      if(isLoading){
+          this._submitButton.textContent = "Eliminando..."
+      } else {
+          this._submitButton.textContent = "Acepto"
+      }
   }
 }
