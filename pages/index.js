@@ -1,4 +1,4 @@
-import {initialCards, formList, inputName, inputWork, buttonEdit, buttonAdd, buttonEditPhoto} from "../src/utils/constants.js";
+import {formList, inputName, inputWork, buttonEdit, buttonAdd, buttonEditPhoto} from "../src/utils/constants.js";
 import Section from "../src/components/Section.js";
 import Card from "../src/components/Card.js";
 import PopupWithImage from "../src/components/PopupWithImage.js";
@@ -8,11 +8,28 @@ import FormValidator from "../src/components/FormValidator.js"
 import UserInfo from "../src/components/UserInfo.js"
 import Api from "../src/utils/api.js";
 import PopupWithPhoto from "../src/components/PopupWithPhoto.js";
-let entro = 1
+
+function clickImage(link){
+  imagePopup.open(link)
+}
+function cardDelete(card){
+    confirmation.open();
+    confirmation.setCardToDelete(card)
+}
+function cardLike(id, heartActive){
+  if(heartActive){
+    api.like(id)
+    .catch(res => console.log(res))
+  }else{
+    api.dislike(id)
+    .catch(err => console.log(err))
+  }
+}
 function changePhoto(link){
   const imageProfile = document.querySelector('.profile__image')
   imageProfile.style.backgroundImage = `url("${link}")`;
 }
+
 const api = new Api("https://around-api.es.tripleten-services.com/v1", {Authorization:"39e7e87b-63d8-4747-bf9f-2089ed281080", "Content-Type": "application/json"})
 const imagePopup = new PopupWithImage(".image-window", '.image-window__image')
 const userInfo = new UserInfo({
@@ -20,7 +37,8 @@ const userInfo = new UserInfo({
   work: ".profile__ocupation",
   photo: ".profile__image"
 })
-let elements
+
+let elements ///Vacio
 api.getAppInfo()
 .then(([userInfoApi, cardsApis])=>{
   userInfo.setUserInfo({
@@ -28,20 +46,16 @@ api.getAppInfo()
     work: userInfoApi.about
   })
   userInfo.setUserPhoto(userInfoApi.avatar)
+
   changePhoto(userInfoApi.avatar)
 
   elements = new Section({
     items: cardsApis,
     renderer: (item)=>{
-      const cardElement = new Card(item.name, item.link, 
-        (link)=>{
-          imagePopup.open(link)
-        }, 
-        (card)=>{
-            confirmation.open();
-            confirmation.setCardToDelete(card)
-        });
-      return cardElement.generateCard();
+      const cardElement = new Card(item.name, item.link, item._id, item.isLiked,
+        clickImage, cardDelete, cardLike)
+       const cardHTML = cardElement.generateCard();
+       return cardHTML
     }
   },'.element')
   elements.renderer()
@@ -50,13 +64,16 @@ api.getAppInfo()
 const addPopup = new PopupWithForm(
   '#new-element__form', 
   (data) =>{
-    const cardElement = new Card(data.title, data.link, 
-      (link)=>{
-        imagePopup.open(link)
-      }, 
-    );
-    const cardHTML = cardElement.generateCard();
-    elements.addItem(cardHTML, true)
+    api.addCard({name:data.title, link:data.link})
+    .then(data=>{
+      const cardElement = new Card(data.name, data.link, data._id, data.isLiked, 
+        clickImage, cardDelete, cardLike);
+
+      const cardHTML = cardElement.generateCard();
+
+      elements.addItem(cardHTML, true)
+    })
+    .catch(err => console.log(err))
   }
 )
 const editPopup = new PopupWithForm(
