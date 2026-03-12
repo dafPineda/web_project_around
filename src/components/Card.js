@@ -1,5 +1,5 @@
  export default class Card{
-  constructor(cardText, cardImage, id, isLiked, handleCardClick, handleDelete, handleLike){
+  constructor(cardText, cardImage, id, isLiked, handleCardClick, handleclickTrash, handleLike){
     this._newCard = document.querySelector(".template-element").content.querySelector('.element__card').cloneNode(true)
     this._heart = this._newCard.querySelector(".element__card-heart")
     this._trash = this._newCard.querySelector(".element__card-trash")
@@ -8,7 +8,7 @@
     this._text = cardText
     this._id = id
     this._handleCardClick = handleCardClick
-    this._handleDelete = handleDelete
+    this._handleclickTrash = handleclickTrash
     this._handleLike = handleLike
     this._isLiked = isLiked
   }
@@ -22,7 +22,7 @@
       this._handleLike(this._id, heartActive)
     });
     this._trash.addEventListener('click', ()=> {
-      this._handleDelete(this._newCard); 
+      this._handleclickTrash(this._newCard, this._id); 
     })
     this._image.addEventListener('click', ()=>{
       this._handleCardClick(this._link)

@@ -12,9 +12,12 @@ import PopupWithPhoto from "../src/components/PopupWithPhoto.js";
 function clickImage(link){
   imagePopup.open(link)
 }
-function cardDelete(card){
+function clickTrash(card, id){
     confirmation.open();
-    confirmation.setCardToDelete(card)
+    confirmation.setCardToDelete(card, id)
+}
+function cardDelete(id) {
+  api.deleteCard(id)
 }
 function cardLike(id, heartActive){
   if(heartActive){
@@ -31,14 +34,16 @@ function changePhoto(link){
 }
 
 const api = new Api("https://around-api.es.tripleten-services.com/v1", {Authorization:"39e7e87b-63d8-4747-bf9f-2089ed281080", "Content-Type": "application/json"})
+const confirmation = new PopupWithConfirmation('#confirmation__form', cardDelete)
 const imagePopup = new PopupWithImage(".image-window", '.image-window__image')
+let elements //Variable global
 const userInfo = new UserInfo({
   name: ".profile__name",
   work: ".profile__ocupation",
   photo: ".profile__image"
 })
 
-let elements ///Vacio
+
 api.getAppInfo()
 .then(([userInfoApi, cardsApis])=>{
   userInfo.setUserInfo({
@@ -53,7 +58,7 @@ api.getAppInfo()
     items: cardsApis,
     renderer: (item)=>{
       const cardElement = new Card(item.name, item.link, item._id, item.isLiked,
-        clickImage, cardDelete, cardLike)
+        clickImage, clickTrash, cardLike)
        const cardHTML = cardElement.generateCard();
        return cardHTML
     }
@@ -67,7 +72,7 @@ const addPopup = new PopupWithForm(
     api.addCard({name:data.title, link:data.link})
     .then(data=>{
       const cardElement = new Card(data.name, data.link, data._id, data.isLiked, 
-        clickImage, cardDelete, cardLike);
+        clickImage, clickTrash, cardLike);
 
       const cardHTML = cardElement.generateCard();
 
@@ -88,7 +93,6 @@ const editPopup = new PopupWithForm(
     })
     .catch(err => console.log(err))
 })
-const confirmation = new PopupWithConfirmation('#confirmation__form')
 const editPhotoProfile = new PopupWithPhoto("#editPhotoProfile", 
   (link)=>{
     api.editUserPhoto(link)
