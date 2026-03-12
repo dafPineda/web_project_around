@@ -32,3 +32,4 @@ export const buttonEdit = document.querySelector('.profile__button-edit');
 export const buttonAdd = document.querySelector('.profile__button-add');
 export const inputName = document.querySelector("#profile-name");
 export const inputWork = document.querySelector("#profile-work");
+export const buttonEditPhoto = document.querySelector(".profile__image")

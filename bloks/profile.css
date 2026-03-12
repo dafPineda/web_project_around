@@ -7,7 +7,6 @@
     column-gap: 5px;
 }
 .profile__image{
-    background-image: url("../images/foto__perfil.jpg");
     grid-column:1;
     grid-row: 1/3;
     background-size: cover;
@@ -15,6 +14,33 @@
     border-radius: 50%;
     min-width: 110px;
     height: 160px;
+    cursor: pointer;
+    position: relative;
+}
+.profile__image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.edit-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: white;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+.profile__image:hover::before {
+  opacity: 1;
+}
+
+.profile__image:hover .edit-icon {
+  opacity: 1;
 }
 .profile__name{
     width: 100%;

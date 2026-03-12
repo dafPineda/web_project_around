@@ -80,9 +80,31 @@
                         </fieldset>
                     </div>
                 </form> 
+                <form class="popup form__confirmation" id="confirmation__form" name="formConfirmation" novalidate>
+                    <button type="button" class="popup__close form__close">&times;</button>
+                    <div class="confirmation-block">
+                        <p class="form__title">¿Deseas eliminar este elemento? Esta acción no se puede deshacer.</p>
+                        <button type="submit" class="form__button">Confirmar</button>
+                    </div>
+                </form>
+                <form class="popup form__confirmation" id="editPhotoProfile" name="editPhotoProfile">
+                    <button type="button" class="popup__close form__close">&times;</button>
+                    <div class="confirmation-block">
+                        <p class="form__title">Link de la nueva foto</p>
+                         <input 
+                            id="photo-link"
+                            class="form__input"
+                            type="url"
+                            name="link"
+                            placeholder="http://...*"
+                            required
+                            >
+                        <button type="submit" class="form__button">Guardar</button>
+                    </div>  
+                </form>
             </section>
             <section class="profile">
-                <div class="profile__image"></div>
+                <div class="profile__image"><div class="edit-icon">&#9998</div></div>
                 <h2 class="profile__name"></h2>
                 <button type="button" class="profile__button-edit">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
@@ -95,6 +117,10 @@
                 <button type="button" class="profile__button-add">+</button>
             </section>
             <section class="element" id="element">
+                <div class="popup image-window">
+                    <button class="image-window__button-close popup__close">&times;</button>
+                    <img class="image-window__image" src="#" alt="#">
+                </div>
                 <template class="template-element">
                     <div class="element__card">
                         <button class="element__card-trash" type="button"></button>
@@ -105,17 +131,6 @@
                         </div>
                     </div>
                 </template>
-                <div class="popup image-window">
-                    <button class="image-window__button-close popup__close">&times;</button>
-                    <img class="image-window__image" src="#" alt="#">
-                </div>
-                <form class="popup confirmation" id="confirmation__form" name="formConfirmation" novalidate>
-                    <button type="button" class="popup__close confirmation__close">&times;</button>
-                    <div class="confirmation-block">
-                        <p class="confirmation__text">¿Deseas eliminar este elemento? Esta acción no se puede deshacer.</p>
-                        <button type="submit" class="confirmation__delete">Confirmar</button>
-                    </div>
-                </form>
             </section>
          </main>
          <footer class="footer">

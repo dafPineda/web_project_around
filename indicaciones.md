@@ -22,11 +22,11 @@ PUT https://around-api.es.tripleten-services.com/v1/cards/:cardId/likes
 * Dislike
 DELETE https://around-api.es.tripleten-services.com/v1/cards/:cardId/likes
 
-
-
 * Popup de confirmacion para borrar  tarjeta
 PopupWithConfirmation 
 
+
+----
 * hover de edicion de foto 
 * Popup de edicion de foto
 

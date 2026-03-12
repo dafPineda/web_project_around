@@ -43,6 +43,17 @@ export default class Api{
     .then(res=> this._checkError(res))
     .catch((err) => console.log(err))
   }
+  editUserPhoto(link){
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: link
+      })
+    })
+    .then(res=> this._checkError(res))
+    .catch((err) => console.log(err))
+  }
   addCard(data){
     return fetch(`${this.baseUrl}/cards/`,{
       method:"POST",
