@@ -25,10 +25,10 @@ DELETE https://around-api.es.tripleten-services.com/v1/cards/:cardId/likes
 * Popup de confirmacion para borrar  tarjeta
 PopupWithConfirmation 
 
-
-----
 * hover de edicion de foto 
 * Popup de edicion de foto
+
+----
 
 * Botones de edicion diciendo "Guardandose"
 estos deben mostrar la palabra hasta que el proceso se acabe

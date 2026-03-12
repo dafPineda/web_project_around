@@ -13,7 +13,7 @@
     //Values
     this._newCard.querySelector('.element__card-text').textContent = this._text;
     this._image.src = this._link
-    this._image.alt = this._alt
+    this._image.alt = this._text
     this._heart.addEventListener('click', this._like);
     this._trash.addEventListener('click', ()=> {
       this._handleDelete(this._newCard); 
