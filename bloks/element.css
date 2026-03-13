@@ -1,10 +1,10 @@
  .element{
     margin:0;
-    padding: 50px 10vw;
+    padding: 50px 8vw;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 40px;
+    column-gap: 7%;
     box-sizing: border-box;
 }
 .element__card{
@@ -42,7 +42,6 @@
     background-size: cover;
     background-position: center;
 }
-
 .element__card-info{
     display: flex;
     align-items: center;
@@ -82,7 +81,6 @@
   opacity: 1;
   background: url(https://practicum-content.s3.us-west-1.amazonaws.com/web-code/dom/moved_heart-filled.svg) center no-repeat;
 }
-
 .image-window{
     display: none;
     position:fixed;
@@ -98,8 +96,8 @@
 .image-window__button-close{
     margin: 0;
     position: absolute;
-    top:80px;
-    right: 100px;
+    top:15vw;
+    right: 15vw;
     background: none;
     border: none;
     font-size: 80px;
@@ -109,6 +107,9 @@
 .image-window__image{
     max-width: 75vw;
     max-height: 75vh;
+}
+@media (max-width:1230px){
+
 }
 @media (max-width:1024px) {
     .element{

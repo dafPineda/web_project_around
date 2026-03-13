@@ -1,20 +1,35 @@
 # Tripleten web_project_around
 Página: https://dafpineda.github.io/web_project_around/
+# Descripción
 
-En este pryecto se aplicarón los conocimientos básicos del uso de JavaScript y DOM, aparte de implementar los conocimientos previos que se vierón con anteoridad de HTML y CSS.
+Este proyecto consiste en una aplicación web interactiva donde los usuarios pueden gestionar un perfil y una colección de tarjetas con imágenes.
+La aplicación implementa buenas prácticas de desarrollo frontend como manipulación del DOM, modularización del código y consumo de una API externa. Además, utiliza una arquitectura basada en clases para organizar la lógica de la aplicación.
+El diseño fue proporcionado previamente y se implementó siguiendo principios de maquetación responsive, permitiendo su correcta visualización en dispositivos móviles, tabletas y escritorio.
 
-En HTML se profundizo más en los formularios con el atributo name y type.
+# Funcionalidades
+* Edición de la foto de perfil con solo un link
+* Edición del nombre y descripción del usuario
+* Agregar más cartas con un titúlo y un link
+* Interacción con las imagenes
+* Dar like y dislike
+* Borrar elementos
 
-El proyecto cuenta con página responsiva con bloques flexibles y el uso de @media para adaptación en tres tipos de pantallas: Celular, tablets y laptops.
+Todas estas acciones son persistentes, ya que la información se guarda y se gestiona mediante una API externa, además de incluir validaciones de formulario para evitar el envío de datos inválidos.
 
-2 botones interactivos para agregar imagenes y editar el nombre o trabajo del perfil.
-Los formularios tienen validacion con JS y DOM para evitar menos caracteres de los solicitados, urls y max de caracteres.
+# Tecnologías 
 
-Todos los botones cuentan con tres diseños interactivos; Predeterminado, al poner el cursor sobre estos y al seleccionarlos. A excepción de los botones de guardado que cuentan con un diseño más de deshabilitados.
+* HTML5 para la estructura de la página.
+* CSS3 para estilos y diseño responsivo.
+* JavaScript (ES6+) para la lógica de la aplicación.
+* Fetch API para la comunicación con el servidor.
+* Git y GitHub para control de versiones.
 
-Puntos de mejora a futuro:
-    -Pantalla que indique que no hay elemntos al borrar todas las imagenes.
-    -Validación de no aceptar urls inexistentes.
-    -Arreglar el boton de cierre del popup al dar click a las imagenes.
-    -Simplificación o escalamiento de código.
-    -Restablecer la validación de formularios(Recomendado por los de TripleTen).
+# Arquitectura del proyecto
+El proyecto está organizado utilizando programación orientada a objetos (OOP).
+
+Algunas características de la arquitectura incluyen:
+* Separación de responsabilidades mediante clases.
+* Uso de un archivo constants.js para centralizar selectores y configuraciones.
+* Manejo de la comunicación con el servidor mediante una clase Api.
+* Creación y renderizado de tarjetas utilizando clases independientes.
+* Uso de herencia entre clases para reutilizar lógica en componentes como formularios y popups.

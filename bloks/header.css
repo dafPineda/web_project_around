@@ -1,5 +1,5 @@
 .header{
-    margin:5vw 13vw;
+    margin:5vw 5vw;
     height: 3rem;
     padding: 0;
 }
@@ -12,13 +12,13 @@
 .header__title_big{
     font-weight: bold;
     margin: 0;
-    font-size: 50px;
+    font-size: 70px;
     margin-top: 5px;
 }
 .header__title_little-up{
     margin-top: 0;
     font-weight: normal;
-    font-size: 15px;
+    font-size: 20x;
 }
 .header__line{
     position: relative;

@@ -45,7 +45,6 @@ const userInfo = new UserInfo({
   photo: ".profile__image"
 })
 
-
 api.getAppInfo()
 .then(([userInfoApi, cardsApis])=>{
   userInfo.setUserInfo({
